@@ -1,0 +1,27 @@
+{
+  "name": "github-analytics",
+  "version": "1.0.0",
+  "description": "A web application that provides beautiful charts based on data found in github issues and comments.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kabitakis/github-analytics.git"
+  },
+  "keywords": [
+    "github",
+    "analytics",
+    "statistics",
+    "issues",
+    "comments",
+    "counters"
+  ],
+  "author": "Nikos Kampitakis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kabitakis/github-analytics/issues"
+  },
+  "homepage": "https://github.com/kabitakis/github-analytics"
+}
