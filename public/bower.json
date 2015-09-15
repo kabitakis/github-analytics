@@ -1,0 +1,21 @@
+{
+  "name": "github-analytics",
+  "main": "github-analytics.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/kabitakis/github-analytics",
+  "authors": [
+    "Nikos Kampitakis"
+  ],
+  "description": "A web application that provides beautiful charts based on data found in github issues and comments.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

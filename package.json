@@ -32,6 +32,10 @@
     "express": "^4.13.3",
     "github": "^0.2.4",
     "lodash": "^3.10.1",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "node-jsx": "^0.13.3",
+    "react": "^0.13.3",
+    "react-engine": "^2.2.0",
+    "react-router": "^0.13.3"
   }
 }
