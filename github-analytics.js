@@ -17,7 +17,10 @@ var ghIssueState = 'open';
 var app = express();
 
 app.use(function (req, res, next) {
-  // authentication - authorization
+  github.authenticate({
+    type: "oauth",
+    token: config.github_token
+  });
   next();
 });
 

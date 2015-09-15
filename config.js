@@ -3,6 +3,7 @@ var config = {
     mode: 'local',
     port: 3000,
     language: 'en',
+    github_token: 'ADD_YOUR_TOKEN_HERE',
     memcached_host: "127.0.0.1:11211",
     deployType:'development',
   },
@@ -10,6 +11,7 @@ var config = {
     mode: 'staging',
     port: 3000,
     language: 'en',
+    github_token: 'ADD_YOUR_TOKEN_HERE',
     memcached_host: "127.0.0.1:11211",
     deployType:'staging',
   },
@@ -17,6 +19,7 @@ var config = {
     mode: 'production',
     port: 3000,
     language: 'en',
+    github_token: 'ADD_YOUR_TOKEN_HERE',
     memcached_host: "127.0.0.1:11211",
     deployType:'production',
   }
