@@ -7,6 +7,7 @@ var async = require('async');
 var moment = require('moment');
 var _ = require('lodash');
 var config = require('./config');
+var dataFactory = require('./dataFactory');
 
 var GitHubApi = require("github");
 var github = new GitHubApi({
@@ -49,57 +50,27 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res, next) {
-  res.render('index', {
-    allComments: 'allComments'
+  dataFactory.getIssueVotes(ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
+    if (err) {
+      res.render('index', {
+        allComments: {},
+        error: err
+      });
+    } else {
+      res.render('index', {
+        allComments: data,
+        error: null
+      });
+    }
   });
 });
 
 app.get('/api/issues', function (req, res) {
-  github.issues.repoIssues({
-    user: ghUser,
-    repo: ghRepo,
-    labels: ghIssueLabels,
-    state: ghIssueState
-  }, function(err, issues){
+  dataFactory.getIssueVotes(ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
     if (err) {
-      console.log(err);
+      res.json({error: err});
     } else {
-      var allComments = {};
-      async.each(issues, function(issue, cb){
-        console.log(issue.number);
-        github.issues.getComments({
-          user: ghUser,
-          repo: ghRepo,
-          number: issue.number
-        }, function(err, comments){
-          if (err) {
-            console.log(err);
-            cb();
-          } else {
-            var votes = [];
-            comments.forEach(function(comment, i){
-              if (comment.body.indexOf(':+1:') !== -1) {
-                votes.push(comment.user.login);
-              }
-            });
-            allComments[issue.number] = {
-              title: issue.title,
-              votes: votes,
-              voteCount: votes.length
-              //comments: comments
-            };
-            console.log(comments.length);
-            cb();
-          }
-        });
-      }, function(err){
-        if(err){
-          console.log('Failed to process all issues');
-        } else {
-          console.log('All issues have been processed successfully');
-          res.json(allComments);
-        }
-      });
+      res.json(data);
     }
   });
 });
