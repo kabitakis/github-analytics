@@ -92,7 +92,7 @@ app.get('/api/issues', function (req, res) {
   });
 });
 
-var server = app.listen(config.port, function () {
+var server = app.listen(process.env.PORT || config.port, function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Github analytics app listening at http://%s:%s', host, port);
