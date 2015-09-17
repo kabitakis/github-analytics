@@ -5,6 +5,7 @@
 var Layout = require('./layout.jsx');
 var React = require('react');
 var _ = require('lodash');
+var BarChart = require('react-d3-components').BarChart;
 
 var PlainMessage = React.createClass({
 
@@ -23,20 +24,21 @@ var PlainMessage = React.createClass({
 
 module.exports = React.createClass({
 
-  getInitialState: function() {
-    var initialData = {
-    };
-    
-    return initialData;
-  },
-
   render: function () {
     return (
       <Layout {...this.props}>
         <div id='index' className="row-fluid">
           <h1>Github Issues Analytics</h1>
         </div>
+        <div>
+          <BarChart
+            data={this.props.chartData}
+            width={400}
+            height={400}
+            margin={{top: 10, bottom: 50, left: 50, right: 10}}/>
+        </div>
       </Layout>
     );
   }
+  
 });

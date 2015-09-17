@@ -64,8 +64,15 @@ app.get('/', function (req, res, next) {
         error: err
       });
     } else {
+      var chartData = _.map(data, function(v,k){ // @todo move this to the dataFactory
+        return {x: k, y: v.voteCount};
+      });
       res.render('index', {
         allComments: data,
+        chartData: [{
+            label: 'Votes',
+            values: chartData
+        }],
         error: null
       });
     }
