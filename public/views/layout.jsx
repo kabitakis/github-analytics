@@ -22,7 +22,7 @@ module.exports = React.createClass({
           <div id="bodywrapper" className="container-fluid">
             {this.props.children}
             <div id="footer" className="col-md-12">
-              <p>DevStaff Team</p>
+              <p>The DevStaff Team</p>
             </div>
           </div>
         </body>
