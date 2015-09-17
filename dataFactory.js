@@ -25,7 +25,7 @@ function getIssueVotes (github, params, callback) {
           } else {
             var votes = [];
             comments.forEach(function(comment, i){
-              if (comment.body.indexOf(':+1:') !== -1) {
+              if (comment.body.indexOf(params.term) !== -1) {
                 votes.push(comment.user.login);
               }
             });

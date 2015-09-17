@@ -13,8 +13,9 @@ var InfoPanel = React.createClass({
     return (
       <ul className="infopanel">
         <li>Repository: /{this.props.data.user}/{this.props.data.repo}</li>
-        <li>Labels: {this.props.data.labels}</li>
-        <li>State: {this.props.data.state}</li>
+        <li>Issue Labels: {this.props.data.labels}</li>
+        <li>Issue State: {this.props.data.state}</li>
+        <li>Search term: {this.props.data.term}</li>
       </ul>
     );
   }

@@ -10,7 +10,8 @@ var config = {
       user: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
-      state: 'open'
+      state: 'open',
+      term: ':+1:'
     }
   },
   staging: {
@@ -24,7 +25,8 @@ var config = {
       user: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
-      state: 'open'
+      state: 'open',
+      term: ':+1:'
     }
   },
   production: {
@@ -38,7 +40,8 @@ var config = {
       user: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
-      state: 'open'
+      state: 'open',
+      term: ':+1:'
     }
   }
 }
