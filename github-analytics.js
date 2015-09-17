@@ -49,8 +49,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(function (req, res, next) {
+  github.misc.rateLimit({}, function(err, result) {
+    console.log('Github API rate limit: ', result);
+    next();
+  });
+});
+
 app.get('/', function (req, res, next) {
-  dataFactory.getIssueVotes(ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
+  dataFactory.getIssueVotes(github, ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
     if (err) {
       res.render('index', {
         allComments: {},
@@ -66,7 +73,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/api/issues', function (req, res) {
-  dataFactory.getIssueVotes(ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
+  dataFactory.getIssueVotes(github, ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
     if (err) {
       res.json({error: err});
     } else {

@@ -5,12 +5,7 @@ var moment = require('moment');
 var _ = require('lodash');
 var config = require('./config');
 
-var GitHubApi = require("github");
-var github = new GitHubApi({
-    version: "3.0.0" // required
-});
-
-function getIssueVotes (user, repo, labels, state, callback) {
+function getIssueVotes (github, user, repo, labels, state, callback) {
   github.issues.repoIssues({
     user: user,
     repo: repo,
