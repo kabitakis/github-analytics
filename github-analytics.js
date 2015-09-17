@@ -14,10 +14,12 @@ var github = new GitHubApi({
     version: "3.0.0" // required
 });
 
-var ghUser = 'devstaff-crete';
-var ghRepo = 'DevStaff-Heraklion';
-var ghIssueLabels = 'Topics';
-var ghIssueState = 'open';
+var ghParams = {
+  ghUser: 'devstaff-crete',
+  ghRepo: 'DevStaff-Heraklion',
+  ghIssueLabels: 'Topics',
+  ghIssueState: 'open'
+};
 
 var app = express();
 
@@ -57,7 +59,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res, next) {
-  dataFactory.getIssueVotes(github, ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
+  dataFactory.getIssueVotes(github, ghParams.ghUser, ghParams.ghRepo, ghParams.ghIssueLabels, ghParams.ghIssueState, function (err, data) {
     if (err) {
       res.render('index', {
         allComments: {},
@@ -73,6 +75,7 @@ app.get('/', function (req, res, next) {
             label: 'Votes',
             values: chartData
         }],
+        ghParams: ghParams,
         error: null
       });
     }
@@ -80,7 +83,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/api/issues', function (req, res) {
-  dataFactory.getIssueVotes(github, ghUser, ghRepo, ghIssueLabels, ghIssueState, function (err, data) {
+  dataFactory.getIssueVotes(github, ghParams.ghUser, ghParams.ghRepo, ghParams.ghIssueLabels, ghParams.ghIssueState, function (err, data) {
     if (err) {
       res.json({error: err});
     } else {

@@ -7,17 +7,15 @@ var React = require('react');
 var _ = require('lodash');
 var BarChart = require('react-d3-components').BarChart;
 
-var PlainMessage = React.createClass({
-
-  onOK: function() {
-    this.props.onOK();
-  },
+var InfoPanel = React.createClass({
 
   render: function(){
     return (
-      <div>
-        <h3>{this.props.msg}</h3>
-      </div>
+      <ul className="infopanel">
+        <li>Repository: /{this.props.data.ghUser}/{this.props.data.ghRepo}</li>
+        <li>Labels: {this.props.data.ghIssueLabels}</li>
+        <li>State: {this.props.data.ghIssueState}</li>
+      </ul>
     );
   }
 });
@@ -30,15 +28,21 @@ module.exports = React.createClass({
         <div id='index' className="row-fluid">
           <h1>Github Issues Analytics</h1>
         </div>
-        <div>
+        <div className="row-fluid">
+          <InfoPanel
+            data={this.props.ghParams}/>
+        </div>
+        <div className="row-fluid">
           <BarChart
             data={this.props.chartData}
             width={400}
             height={400}
-            margin={{top: 10, bottom: 50, left: 50, right: 10}}/>
+            xAxis={{label: "Topic #"}}
+            yAxis={{label: 'Votes'}}
+            margin={{top: 20, bottom: 50, left: 50, right: 20}}/>
         </div>
       </Layout>
     );
   }
-  
+
 });
