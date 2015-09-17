@@ -36,7 +36,7 @@ module.exports = React.createClass({
         <div className="row-fluid">
           <BarChart
             data={this.props.chartData}
-            width={400}
+            width={600}
             height={400}
             xAxis={{label: "Topic #"}}
             yAxis={{label: 'Votes'}}
