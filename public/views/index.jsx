@@ -12,9 +12,9 @@ var InfoPanel = React.createClass({
   render: function(){
     return (
       <ul className="infopanel">
-        <li>Repository: /{this.props.data.ghUser}/{this.props.data.ghRepo}</li>
-        <li>Labels: {this.props.data.ghIssueLabels}</li>
-        <li>State: {this.props.data.ghIssueState}</li>
+        <li>Repository: /{this.props.data.user}/{this.props.data.repo}</li>
+        <li>Labels: {this.props.data.labels}</li>
+        <li>State: {this.props.data.state}</li>
       </ul>
     );
   }

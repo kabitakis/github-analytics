@@ -6,6 +6,12 @@ var config = {
     github_token: process.env.GHTOKEN,
     memcached_host: "127.0.0.1:11211",
     deployType:'development',
+    defaultParams: {
+      user: 'devstaff-crete',
+      repo: 'DevStaff-Heraklion',
+      labels: 'Topics',
+      state: 'open'
+    }
   },
   staging: {
     mode: 'staging',
@@ -14,6 +20,12 @@ var config = {
     github_token: process.env.GHTOKEN,
     memcached_host: "127.0.0.1:11211",
     deployType:'staging',
+    defaultParams: {
+      user: 'devstaff-crete',
+      repo: 'DevStaff-Heraklion',
+      labels: 'Topics',
+      state: 'open'
+    }
   },
   production: {
     mode: 'production',
@@ -22,6 +34,12 @@ var config = {
     github_token: process.env.GHTOKEN,
     memcached_host: "127.0.0.1:11211",
     deployType:'production',
+    defaultParams: {
+      user: 'devstaff-crete',
+      repo: 'DevStaff-Heraklion',
+      labels: 'Topics',
+      state: 'open'
+    }
   }
 }
 

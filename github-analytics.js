@@ -14,13 +14,6 @@ var github = new GitHubApi({
     version: "3.0.0" // required
 });
 
-var ghParams = {
-  ghUser: 'devstaff-crete',
-  ghRepo: 'DevStaff-Heraklion',
-  ghIssueLabels: 'Topics',
-  ghIssueState: 'open'
-};
-
 var app = express();
 
 var engineOptions = {
@@ -59,12 +52,14 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res, next) {
-  dataFactory.getIssueVotes(github, ghParams.ghUser, ghParams.ghRepo, ghParams.ghIssueLabels, ghParams.ghIssueState, function (err, data) {
+  var ghParams = _.isEmpty(req.query) ? config.defaultParams : req.query;
+  dataFactory.getIssueVotes(github, ghParams, function (err, data) {
     if (err) {
-      res.render('index', {
-        allComments: {},
-        error: err
-      });
+      res.json({error: err});
+      // res.render('error', {
+      //   allComments: {},
+      //   error: err
+      // });
     } else {
       var chartData = _.map(data, function(v,k){ // @todo move this to the dataFactory
         return {x: k, y: v.voteCount};
@@ -83,7 +78,8 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/api/issues', function (req, res) {
-  dataFactory.getIssueVotes(github, ghParams.ghUser, ghParams.ghRepo, ghParams.ghIssueLabels, ghParams.ghIssueState, function (err, data) {
+  var ghParams = _.isEmpty(req.query) ? config.defaultParams : req.query;
+  dataFactory.getIssueVotes(github, ghParams, function (err, data) {
     if (err) {
       res.json({error: err});
     } else {
