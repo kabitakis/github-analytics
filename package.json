@@ -4,7 +4,7 @@
   "description": "A web application that provides beautiful charts based on data found in github issues and comments.",
   "main": "github-analytics.js",
   "scripts": {
-    "start": "pm2 stop github-analytics; pm2 delete github-analytics; NODE_ENV=production pm2 start github-analytics.js",
+    "start": "NODE_ENV=production node github-analytics.js",
     "dev": "NODE_ENV=local nodemon github-analytics.js",
     "debug": "NODE_ENV=local nodemon --debug github-analytics.js",
     "test": "gulp test"
