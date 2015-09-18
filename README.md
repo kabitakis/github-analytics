@@ -21,8 +21,8 @@ Try the following urls to get an idea of how the app works:
 * term (String): Required. The term to search for in the comments of the issues.
 
 ## Examples
-https://powerful-sands-5380.herokuapp.com/
-https://powerful-sands-5380.herokuapp.com/api/issues
+* https://powerful-sands-5380.herokuapp.com/
+* https://powerful-sands-5380.herokuapp.com/api/issues
 
 ## Todo
 * Add charts: votes (and voters) per issue, votes per user, issue votes per date
