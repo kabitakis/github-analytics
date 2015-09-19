@@ -61,15 +61,28 @@ app.get('/', function (req, res, next) {
       //   error: err
       // });
     } else {
-      var chartData = _.map(data, function(v,k){ // @todo move this to the dataFactory
-        return {x: k, y: v.voteCount};
+      var chartData = {
+        labels: [],
+        datasets: [
+          {
+            label: "Votes",
+            fillColor: "rgba(42,144,159,0.7)",
+            strokeColor: "rgba(42,144,159,0.9)",
+            highlightFill: "rgba(42,144,159,0.9)",
+            highlightStroke: "rgba(42,144,159,1)",
+            //highlightStroke: "rgba(224,121,0,1)",
+            data: []
+          }
+        ]
+      };
+      _.forEach(data, function(v, k) { // @todo move this to the dataFactory
+        chartData.labels.push(k);
+        chartData.datasets[0].data.push(v.voteCount);
       });
+      
       res.render('index', {
-        allComments: data,
-        chartData: [{
-            label: 'Votes',
-            values: chartData
-        }],
+        allData: data,
+        chartData: chartData,
         ghParams: ghParams,
         error: null
       });

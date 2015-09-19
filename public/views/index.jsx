@@ -5,7 +5,7 @@
 var Layout = require('./layout.jsx');
 var React = require('react');
 var _ = require('lodash');
-var BarChart = require('react-d3-components').BarChart;
+var BarChart = require("react-chartjs").Bar;
 
 var InfoPanel = React.createClass({
 
@@ -21,6 +21,10 @@ var InfoPanel = React.createClass({
   }
 });
 
+var chartOptions = {
+  responsive: true
+};
+
 module.exports = React.createClass({
 
   render: function () {
@@ -34,13 +38,7 @@ module.exports = React.createClass({
             data={this.props.ghParams}/>
         </div>
         <div className="row-fluid">
-          <BarChart
-            data={this.props.chartData}
-            width={600}
-            height={400}
-            xAxis={{label: "Topic #"}}
-            yAxis={{label: 'Votes'}}
-            margin={{top: 20, bottom: 50, left: 50, right: 20}}/>
+          <BarChart data={this.props.chartData} options={chartOptions}/>
         </div>
       </Layout>
     );

@@ -29,13 +29,14 @@
   "homepage": "https://github.com/kabitakis/github-analytics",
   "dependencies": {
     "async": "^1.4.2",
+    "chart.js": "^1.0.2",
     "express": "^4.13.3",
     "github": "^0.2.4",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "node-jsx": "^0.13.3",
     "react": "^0.13.3",
-    "react-d3-components": "^0.4.8",
+    "react-chartjs": "^0.6.0",
     "react-engine": "^2.2.0",
     "react-router": "^0.13.3",
     "reactify": "^1.1.1"
