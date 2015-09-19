@@ -21,6 +21,32 @@ var InfoPanel = React.createClass({
   }
 });
 
+var IssueInfoBox = React.createClass({
+  
+  renderItem: function(issue){
+    return (
+      <div>
+        <h3>#{issue.key} {issue.title}</h3>
+        <ul className="list-group">
+          {issue.votes.map(function(user, i) {
+            return (
+              <li className="list-group-item" key={i}>{user}</li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  },
+
+  render: function(){
+    return (
+      <div>
+        {this.renderItem(this.props.issue)}
+      </div>
+    );
+  }
+});
+
 var chartOptions = {
   responsive: true
 };
@@ -39,6 +65,18 @@ module.exports = React.createClass({
         </div>
         <div className="row-fluid">
           <BarChart data={this.props.chartData} options={chartOptions}/>
+        </div>
+        <div className="row-fluid">
+          <h2>Upvoting users per issue</h2>
+          {Object.keys(this.props.allData).map(function(v, i) {
+            var issue = this.props.allData[v];
+            issue.key = v;
+            return (
+              <div key={issue.key}>
+                <IssueInfoBox issue={issue}/>
+              </div>
+            );
+          }, this)}
         </div>
       </Layout>
     );
