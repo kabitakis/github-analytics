@@ -26,7 +26,7 @@ var IssueInfoBox = React.createClass({
   renderItem: function(issue){
     return (
       <div>
-        <h3>#{issue.key} {issue.title}</h3>
+        <h3>#{issue.key} {issue.title} <span className="badge">{issue.voteCount}</span></h3>
         <ul className="list-group">
           {issue.votes.map(function(user, i) {
             return (
@@ -60,10 +60,12 @@ module.exports = React.createClass({
           <h1>Github Issues Analytics</h1>
         </div>
         <div className="row-fluid">
+          <h2>Repo and search params</h2>
           <InfoPanel
             data={this.props.ghParams}/>
         </div>
         <div className="row-fluid">
+          <h2>Votes per issue #</h2>
           <BarChart data={this.props.chartData} options={chartOptions}/>
         </div>
         <div className="row-fluid">
