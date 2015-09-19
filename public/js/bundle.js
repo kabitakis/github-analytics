@@ -38819,7 +38819,7 @@ var IssueInfoBox = React.createClass({displayName: "IssueInfoBox",
   renderItem: function(issue){
     return (
       React.createElement("div", null, 
-        React.createElement("h3", null, "#", issue.key, " ", issue.title), 
+        React.createElement("h3", null, "#", issue.key, " ", issue.title, " ", React.createElement("span", {className: "badge"}, issue.voteCount)), 
         React.createElement("ul", {className: "list-group"}, 
           issue.votes.map(function(user, i) {
             return (
@@ -38853,10 +38853,12 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("h1", null, "Github Issues Analytics")
         ), 
         React.createElement("div", {className: "row-fluid"}, 
+          React.createElement("h2", null, "Repo and search params"), 
           React.createElement(InfoPanel, {
             data: this.props.ghParams})
         ), 
         React.createElement("div", {className: "row-fluid"}, 
+          React.createElement("h2", null, "Votes per issue #"), 
           React.createElement(BarChart, {data: this.props.chartData, options: chartOptions})
         ), 
         React.createElement("div", {className: "row-fluid"}, 
