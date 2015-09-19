@@ -27,5 +27,4 @@ build/Release
 node_modules
 
 # Browserify generated js file
-bundle.js
-
+#bundle.js
