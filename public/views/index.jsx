@@ -27,13 +27,14 @@ var IssueInfoBox = React.createClass({
     return (
       <div>
         <h3>#{issue.key} {issue.title} <span className="badge">{issue.voteCount}</span></h3>
-        <ul className="list-group">
+        <div className="allUsers">
+          <b>Users: </b>
           {issue.votes.map(function(user, i) {
             return (
-              <li className="list-group-item" key={i}>{user}</li>
+              <span className="user" key={i}>{user} </span>
             );
           })}
-        </ul>
+        </div>
       </div>
     );
   },
