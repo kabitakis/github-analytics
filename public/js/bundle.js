@@ -38820,10 +38820,11 @@ var IssueInfoBox = React.createClass({displayName: "IssueInfoBox",
     return (
       React.createElement("div", null, 
         React.createElement("h3", null, "#", issue.key, " ", issue.title, " ", React.createElement("span", {className: "badge"}, issue.voteCount)), 
-        React.createElement("ul", {className: "list-group"}, 
+        React.createElement("div", {className: "allUsers"}, 
+          React.createElement("b", null, "Users: "), 
           issue.votes.map(function(user, i) {
             return (
-              React.createElement("li", {className: "list-group-item", key: i}, user)
+              React.createElement("span", {className: "user", key: i}, user, " ")
             );
           })
         )
