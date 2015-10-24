@@ -25,7 +25,10 @@ function getIssueVotes (github, params, callback) {
           } else {
             var votes = [];
             comments.forEach(function(comment, i){
-              if (comment.body.indexOf(params.term) !== -1) {
+              // Lookup for term in comments and don't count multiple terms
+              // from the same login
+              if (comment.body.indexOf(params.term) !== -1 &&
+                  votes.indexOf(comment.user.login) < 0 ) {
                 votes.push(comment.user.login);
               }
             });
