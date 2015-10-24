@@ -65,9 +65,17 @@ module.exports = React.createClass({
           <InfoPanel
             data={this.props.ghParams}/>
         </div>
-        <div className="row-fluid">
-          <h2>Votes per issue #</h2>
-          <BarChart data={this.props.chartData} options={chartOptions}/>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-12 col-md-6">
+              <h2>Votes per issue # (Sorted by issue #)</h2>
+              <BarChart data={this.props.chartData} options={chartOptions}/>
+            </div>
+            <div className="col-xs-12 col-md-6">
+              <h2>Votes per issue # (Sorted by popularity)</h2>
+              <BarChart data={this.props.chartData2} options={chartOptions}/>
+            </div>
+          </div>
         </div>
         <div className="row-fluid">
           <h2>Upvoting users per issue</h2>
