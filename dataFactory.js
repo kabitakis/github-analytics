@@ -26,9 +26,9 @@ function getIssueVotes (github, params, callback) {
             var votes = [];
             comments.forEach(function(comment, i){
               // Lookup for term in comments and don't count multiple terms
-              // from the same login
+              // from the same login, if exclusive is set.
               if (comment.body.indexOf(params.term) !== -1 &&
-                  votes.indexOf(comment.user.login) < 0 ) {
+                  (!params.exclusive || votes.indexOf(comment.user.login) < 0) ) {
                 votes.push(comment.user.login);
               }
             });

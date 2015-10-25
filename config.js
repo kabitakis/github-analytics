@@ -11,7 +11,8 @@ var config = {
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
-      term: ':+1:'
+      term: ':+1:',
+      exclusive: true
     }
   },
   staging: {
@@ -26,7 +27,8 @@ var config = {
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
-      term: ':+1:'
+      term: ':+1:',
+      exclusive: true
     }
   },
   production: {
@@ -41,7 +43,8 @@ var config = {
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
-      term: ':+1:'
+      term: ':+1:',
+      exclusive: true
     }
   }
 }
