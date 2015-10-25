@@ -4,7 +4,7 @@ A web application that provides beautiful charts based on data found in github i
 ## Installation
 ```bash
 npm install
-browserify -t reactify public/*.js -o public/js/bundle.js
+./node_modules/.bin/browserify -t reactify public/*.js -o public/js/bundle.js
 GHTOKEN='YOUR_GITHUB_TOKEN' node github-analytics.js
 ```
 
