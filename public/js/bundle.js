@@ -38898,7 +38898,7 @@ var InfoPanel = React.createClass({displayName: "InfoPanel",
   render: function(){
     return (
       React.createElement("ul", null, 
-        React.createElement("li", null, "Repository: /", this.props.data.user, "/", this.props.data.repo), 
+        React.createElement("li", null, "Repository: ", React.createElement("a", {href: "https://github.com/{this.props.data.user}/{this.props.data.repo}", target: "_blank"}, "/", this.props.data.user, "/", this.props.data.repo)), 
         React.createElement("li", null, "Issue Labels: ", this.props.data.labels), 
         React.createElement("li", null, "Issue State: ", this.props.data.state), 
         React.createElement("li", null, "Search term: ", this.props.data.term), 
@@ -39011,7 +39011,7 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {id: "bodywrapper", className: "container-fluid"}, 
             this.props.children, 
             React.createElement("div", {id: "footer", className: "col-md-12"}, 
-              React.createElement("p", null, "The DevStaff Team")
+              React.createElement("p", null, React.createElement("a", {href: "http://devstaff.gr", target: "_blank"}, "The DevStaff Team"))
             )
           )
         ), 

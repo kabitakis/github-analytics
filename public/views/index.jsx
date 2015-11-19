@@ -12,7 +12,7 @@ var InfoPanel = React.createClass({
   render: function(){
     return (
       <ul>
-        <li>Repository: /{this.props.data.user}/{this.props.data.repo}</li>
+        <li>Repository: <a href="https://github.com/{this.props.data.user}/{this.props.data.repo}" target="_blank">/{this.props.data.user}/{this.props.data.repo}</a></li>
         <li>Issue Labels: {this.props.data.labels}</li>
         <li>Issue State: {this.props.data.state}</li>
         <li>Search term: {this.props.data.term}</li>
