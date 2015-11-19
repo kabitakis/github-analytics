@@ -38912,8 +38912,11 @@ var IssueInfoBox = React.createClass({displayName: "IssueInfoBox",
   
   renderItem: function(issue){
     return (
-      React.createElement("div", null, 
-        React.createElement("h3", null, "#", issue.key, " ", issue.title, " ", React.createElement("span", {className: "badge"}, issue.voteCount)), 
+      React.createElement("div", {className: "issue"}, 
+        React.createElement("h3", null, React.createElement("a", {href: issue.html_url, target: "_blank"}, "#", issue.key, " ", issue.title), " ", React.createElement("span", {className: "badge"}, issue.voteCount)), 
+        React.createElement("div", {className: "date"}, 
+          React.createElement("b", null, "Created at: "), " ", issue.created_at
+        ), 
         React.createElement("div", {className: "allUsers"}, 
           React.createElement("b", null, "Users: "), 
           issue.votes.map(function(user, i) {
