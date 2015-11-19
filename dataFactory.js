@@ -17,7 +17,8 @@ function getIssueVotes (github, params, callback) {
         github.issues.getComments({
           user: params.user,
           repo: params.repo,
-          number: issue.number
+          number: issue.number,
+          per_page: params.per_page
         }, function(err, comments){
           if (err) {
             console.log(err);

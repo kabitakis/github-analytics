@@ -12,7 +12,8 @@ var config = {
       labels: 'Topics',
       state: 'open',
       term: ':+1:',
-      exclusive: true
+      exclusive: true,
+      per_page: 100
     }
   },
   staging: {
@@ -28,7 +29,8 @@ var config = {
       labels: 'Topics',
       state: 'open',
       term: ':+1:',
-      exclusive: true
+      exclusive: true,
+      per_page: 100
     }
   },
   production: {
@@ -44,7 +46,8 @@ var config = {
       labels: 'Topics',
       state: 'open',
       term: ':+1:',
-      exclusive: true
+      exclusive: true,
+      per_page: 100
     }
   }
 }
