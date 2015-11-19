@@ -11,7 +11,7 @@ var InfoPanel = React.createClass({
 
   render: function(){
     return (
-      <ul className="infopanel">
+      <ul>
         <li>Repository: /{this.props.data.user}/{this.props.data.repo}</li>
         <li>Issue Labels: {this.props.data.labels}</li>
         <li>Issue State: {this.props.data.state}</li>
@@ -64,7 +64,7 @@ module.exports = React.createClass({
         <div id='index' className="row-fluid">
           <h1>Github Issues Analytics</h1>
         </div>
-        <div className="row-fluid">
+        <div className="row-fluid infopanel">
           <h2>Repo and search params</h2>
           <InfoPanel
             data={this.props.ghParams}/>

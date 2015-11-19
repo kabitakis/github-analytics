@@ -1,5 +1,6 @@
 body { font-size: 16px; }
 a { color: rgb(42,144,159); }
 a:focus, a:hover { color: rgb(37,127,140); }
+.infopanel { background-color: #EEE; margin: 30px 0; padding: 2px 10px; }
 .issue { margin: 30px 0; }
 #footer { text-align: right; background-color: #eee; padding: 30px; margin: 30px 0 0; }

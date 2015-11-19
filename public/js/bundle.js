@@ -38897,7 +38897,7 @@ var InfoPanel = React.createClass({displayName: "InfoPanel",
 
   render: function(){
     return (
-      React.createElement("ul", {className: "infopanel"}, 
+      React.createElement("ul", null, 
         React.createElement("li", null, "Repository: /", this.props.data.user, "/", this.props.data.repo), 
         React.createElement("li", null, "Issue Labels: ", this.props.data.labels), 
         React.createElement("li", null, "Issue State: ", this.props.data.state), 
@@ -38950,7 +38950,7 @@ module.exports = React.createClass({displayName: "exports",
         React.createElement("div", {id: "index", className: "row-fluid"}, 
           React.createElement("h1", null, "Github Issues Analytics")
         ), 
-        React.createElement("div", {className: "row-fluid"}, 
+        React.createElement("div", {className: "row-fluid infopanel"}, 
           React.createElement("h2", null, "Repo and search params"), 
           React.createElement(InfoPanel, {
             data: this.props.ghParams})
