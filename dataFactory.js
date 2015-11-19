@@ -35,6 +35,8 @@ function getIssueVotes (github, params, callback) {
             });
             allComments[issue.number] = {
               title: issue.title,
+              html_url: issue.html_url,
+              created_at: issue.created_at,
               votes: votes,
               voteCount: votes.length
               //comments: comments

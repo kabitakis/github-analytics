@@ -26,8 +26,11 @@ var IssueInfoBox = React.createClass({
   
   renderItem: function(issue){
     return (
-      <div>
-        <h3>#{issue.key} {issue.title} <span className="badge">{issue.voteCount}</span></h3>
+      <div className="issue">
+        <h3><a href={issue.html_url} target="_blank">#{issue.key} {issue.title}</a> <span className="badge">{issue.voteCount}</span></h3>
+        <div className="date">
+          <b>Created at: </b> {issue.created_at}
+        </div>
         <div className="allUsers">
           <b>Users: </b>
           {issue.votes.map(function(user, i) {

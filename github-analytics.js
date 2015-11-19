@@ -91,7 +91,7 @@ app.get('/', function (req, res, next) {
       };
 
       _.forEach(data, function(v, k) { // @todo move this to the dataFactory
-        chartData.labels.push(k);
+        chartData.labels.push(k + ': ' + v.title.substring(0, 12));
         chartData.datasets[0].data.push(v.voteCount);
       });
 
