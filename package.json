@@ -36,7 +36,7 @@
     "moment": "^2.10.6",
     "node-jsx": "^0.13.3",
     "react": "^0.14.3",
-    "react-chartjs": "git@github.com:zackify/react-chartjs.git",
+    "react-chartjs": "^0.6.0",
     "react-engine": "^2.6.0",
     "react-router": "^0.13.5",
     "reactify": "^1.1.1",
