@@ -38959,11 +38959,11 @@ module.exports = React.createClass({displayName: "exports",
           React.createElement("div", {className: "row"}, 
             React.createElement("div", {className: "col-xs-12 col-md-6"}, 
               React.createElement("h2", null, "Votes per issue # (Sorted by issue #)"), 
-              React.createElement(BarChart, {data: this.props.chartData, options: chartOptions})
+              React.createElement(BarChart, {data: this.props.chartData.byId, options: chartOptions})
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-6"}, 
               React.createElement("h2", null, "Votes per issue # (Sorted by popularity)"), 
-              React.createElement(BarChart, {data: this.props.chartData2, options: chartOptions})
+              React.createElement(BarChart, {data: this.props.chartData.byCount, options: chartOptions})
             )
           )
         ), 

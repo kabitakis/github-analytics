@@ -73,11 +73,11 @@ module.exports = React.createClass({
           <div className="row">
             <div className="col-xs-12 col-md-6">
               <h2>Votes per issue # (Sorted by issue #)</h2>
-              <BarChart data={this.props.chartData} options={chartOptions}/>
+              <BarChart data={this.props.chartData.byId} options={chartOptions}/>
             </div>
             <div className="col-xs-12 col-md-6">
               <h2>Votes per issue # (Sorted by popularity)</h2>
-              <BarChart data={this.props.chartData2} options={chartOptions}/>
+              <BarChart data={this.props.chartData.byCount} options={chartOptions}/>
             </div>
           </div>
         </div>

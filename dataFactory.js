@@ -58,6 +58,61 @@ function getIssueVotes (github, params, callback) {
   });
 }
 
+function toVoteCountChartData (data) {
+  var initData = {
+    labels: [],
+    datasets: [
+      {
+        label: "Votes",
+        fillColor: "rgba(42,144,159,0.7)",
+        strokeColor: "rgba(42,144,159,0.9)",
+        highlightFill: "rgba(42,144,159,0.9)",
+        highlightStroke: "rgba(42,144,159,1)",
+        data: []
+      }
+    ]
+  };
+
+  var chartData = {
+    byId: _.cloneDeep(initData),
+    byCount: _.cloneDeep(initData),
+    byDate: _.cloneDeep(initData)
+  };
+
+  _.forEach(data, function(v, k) {
+    chartData.byId.labels.push(k + ': ' + v.title.substring(0, 12));
+    chartData.byId.datasets[0].data.push(v.voteCount);
+  });
+
+  // Sort by popularity
+  var zipped = [], i;
+
+  // pack the two arrays in one
+  for(i=0; i<chartData.byId.labels.length; ++i) {
+    zipped.push({
+        label: chartData.byId.labels[i],
+        value: chartData.byId.datasets[0].data[i]
+    });
+  }
+
+  // Sort the packed array in descending order
+  zipped.sort(function(left, right) {
+      var leftValue  = left.value,
+          rightValue = right.value;
+
+      return leftValue === rightValue ? 0 : (leftValue < rightValue ? 1 : -1);
+  });
+
+  // Unpack array
+  for(i=0; i<zipped.length; ++i) {
+      chartData.byCount.labels.push(zipped[i].label);
+      chartData.byCount.datasets[0].data.push(zipped[i].value);
+  }
+
+  return chartData;
+}
+
 module.exports = {
-  getIssueVotes: getIssueVotes
+  getIssueVotes: getIssueVotes,
+  toVoteCountChartData: toVoteCountChartData
 };

@@ -56,74 +56,13 @@ app.get('/', function (req, res, next) {
   dataFactory.getIssueVotes(github, ghParams, function (err, data) {
     if (err) {
       res.json({error: err});
-      // res.render('error', {
-      //   allComments: {},
-      //   error: err
-      // });
     } else {
-      var chartData = {
-        labels: [],
-        datasets: [
-          {
-            label: "Votes",
-            fillColor: "rgba(42,144,159,0.7)",
-            strokeColor: "rgba(42,144,159,0.9)",
-            highlightFill: "rgba(42,144,159,0.9)",
-            highlightStroke: "rgba(42,144,159,1)",
-            //highlightStroke: "rgba(224,121,0,1)",
-            data: []
-          }
-        ]
-      },
-      chartData2 = {
-        labels: [],
-        datasets: [
-          {
-            label: "Votes",
-            fillColor: "rgba(42,144,159,0.7)",
-            strokeColor: "rgba(42,144,159,0.9)",
-            highlightFill: "rgba(42,144,159,0.9)",
-            highlightStroke: "rgba(42,144,159,1)",
-            //highlightStroke: "rgba(224,121,0,1)",
-            data: []
-          }
-        ]
-      };
 
-      _.forEach(data, function(v, k) { // @todo move this to the dataFactory
-        chartData.labels.push(k + ': ' + v.title.substring(0, 12));
-        chartData.datasets[0].data.push(v.voteCount);
-      });
-
-      // Sort by popularity
-      var zipped = [], i;
-
-      // pack the two arrays in one
-      for(i=0; i<chartData.labels.length; ++i) {
-        zipped.push({
-            label: chartData.labels[i],
-            value: chartData.datasets[0].data[i]
-        });
-      }
-
-      // Sort the packed array in descending order
-      zipped.sort(function(left, right) {
-          var leftValue  = left.value,
-              rightValue = right.value;
-
-          return leftValue === rightValue ? 0 : (leftValue < rightValue ? 1 : -1);
-      });
-
-      // Unpack array
-      for(i=0; i<zipped.length; ++i) {
-          chartData2.labels.push(zipped[i].label);
-          chartData2.datasets[0].data.push(zipped[i].value);
-      }
+      var chartData = dataFactory.toVoteCountChartData(data);
 
       res.render('index', {
         allData: data,
         chartData: chartData,
-        chartData2: chartData2,
         ghParams: ghParams,
         error: null
       });
