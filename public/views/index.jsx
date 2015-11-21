@@ -4,6 +4,7 @@
 
 var Layout = require('./layout.jsx');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var _ = require('lodash');
 var BarChart = require("react-chartjs").Bar;
 
@@ -58,10 +59,23 @@ var chartOptions = {
 
 module.exports = React.createClass({
 
+  getInitialState: function () {
+    return {
+      sort: 'byId'
+    };
+  },
+  
+  onSortUpdate: function (event) {
+    this.setState({
+      sort: event.target.dataset.sort
+    });
+    this.forceUpdate();
+  },
+  
   render: function () {
     return (
       <Layout {...this.props}>
-        <div id='index' className="row-fluid">
+        <div id="index" className="row-fluid">
           <h1>Github Issues Analytics</h1>
         </div>
         <div className="row-fluid infopanel">
@@ -72,12 +86,15 @@ module.exports = React.createClass({
         <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12 col-md-6">
-              <h2>Votes per issue # (Sorted by issue #)</h2>
-              <BarChart data={this.props.chartData.byId} options={chartOptions}/>
+              <div id="sortingOptions" className="btn-group" role="group">
+                <span>Sort by: </span>
+                <button data-sort="byId" onClick={this.onSortUpdate} type="button" className="btn btn-default" >Issue ID</button>
+                <button data-sort="byCount" onClick={this.onSortUpdate} type="button" className="btn btn-default">Vote Count</button>
+              </div>
             </div>
-            <div className="col-xs-12 col-md-6">
-              <h2>Votes per issue # (Sorted by popularity)</h2>
-              <BarChart data={this.props.chartData.byCount} options={chartOptions}/>
+            <div className="col-xs-12 col-md-12">
+              <h2>Votes per Issue ID</h2>
+              <BarChart data={this.props.chartData[this.state.sort]} options={chartOptions}/>
             </div>
           </div>
         </div>
