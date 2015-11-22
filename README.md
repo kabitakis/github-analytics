@@ -10,8 +10,8 @@ GHTOKEN='YOUR_GITHUB_TOKEN' node github-analytics.js
 
 ## Usage
 Try the following urls to get an idea of how the app works:
-* {your_app_url}/?user=devstaff-crete&repo=DevStaff-Heraklion&state=open&term=:%2B1:
-* {your_app_url}/api/issues/?user=devstaff-crete&repo=DevStaff-Heraklion&state=open&term=:%2B1:
+* {your_app_url}/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&term=:%2B1:&exclusive=1&per_page=100
+* {your_app_url}/api/issues/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&term=:%2B1:&exclusive=1&per_page=100
 
 ### Params
 * user (String): Required.
@@ -19,11 +19,9 @@ Try the following urls to get an idea of how the app works:
 * labels (String): Optional. String list of comma separated Label names. Example: "bug,ui,@high"
 * state (String): Optional. open, closed, or all Validation rule: ^(open|closed|all)$.
 * term (String): Required. The term to search for in the comments of the issues.
+* exclusive (Boolean): Optional. Count term per user rather than per comment. Can be either ommited (false) or set to 1 (true).
+* per_page (Number): Optional. A custom page size up to 100. Default is 30. Validation rule: ^[0-9]+$.
 
 ## Examples
-* https://powerful-sands-5380.herokuapp.com/
-* https://powerful-sands-5380.herokuapp.com/api/issues
-
-## Todo
-* Add charts: votes (and voters) per issue, votes per user, issue votes per date
-* Add form to input params: org/user, repo, issue label, voting emoji
+* http://analytics.devstaff.gr/
+* http://analytics.devstaff.gr/api/issues
