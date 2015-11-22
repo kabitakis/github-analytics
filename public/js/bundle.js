@@ -38323,7 +38323,7 @@ module.exports = React.createClass({displayName: "exports",
                 React.createElement("button", {"data-sort": "byCount", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Vote Count")
               )
             ), 
-            React.createElement("div", {className: "col-xs-12 col-md-12"}, 
+            React.createElement("div", {className: "col-xs-11 col-md-11"}, 
               React.createElement("h2", null, "Votes per Issue ID"), 
               React.createElement(BarChart, {ref: "issueVotesChart", data: this.props.chartData[this.state.sort], options: chartOptions, onClick: this.onChartClick, redraw: true})
             )

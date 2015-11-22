@@ -100,7 +100,7 @@ module.exports = React.createClass({
                 <button data-sort="byCount" onClick={this.onSortUpdate} type="button" className="btn btn-default">Vote Count</button>
               </div>
             </div>
-            <div className="col-xs-12 col-md-12">
+            <div className="col-xs-11 col-md-11">
               <h2>Votes per Issue ID</h2>
               <BarChart ref="issueVotesChart" data={this.props.chartData[this.state.sort]} options={chartOptions} onClick={this.onChartClick} redraw />
             </div>
