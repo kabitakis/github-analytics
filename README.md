@@ -11,8 +11,10 @@ You can also start without a [Github Token](https://help.github.com/articles/cre
 
 ## Usage
 Try the following urls to get an idea of how the app works:
-* {your_app_url}/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&term=:%2B1:&exclusive=1&per_page=100
-* {your_app_url}/api/issues/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&term=:%2B1:&exclusive=1&per_page=100
+* http://localhost:3000
+* http://localhost:3000/api/issues
+* http://localhost:3000/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&term=:%2B1:&exclusive=1&per_page=100
+* http://localhost:3000/api/issues/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&term=:%2B1:&exclusive=1&per_page=100
 
 ### Params
 * user (String): Required.
