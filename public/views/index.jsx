@@ -17,7 +17,7 @@ var InfoPanel = React.createClass({
         <li>Issue Labels: {this.props.data.labels}</li>
         <li>Issue State: {this.props.data.state}</li>
         <li>Search term: {this.props.data.term}</li>
-        <li>Count one instance per user, per topic: {this.props.data.exclusive.toString()}</li>
+        <li>Count one instance per user, per topic: {this.props.data.exclusive ? this.props.data.exclusive.toString() : 'false'}</li>
       </ul>
     );
   }

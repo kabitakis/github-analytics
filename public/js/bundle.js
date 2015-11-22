@@ -38240,7 +38240,7 @@ var InfoPanel = React.createClass({displayName: "InfoPanel",
         React.createElement("li", null, "Issue Labels: ", this.props.data.labels), 
         React.createElement("li", null, "Issue State: ", this.props.data.state), 
         React.createElement("li", null, "Search term: ", this.props.data.term), 
-        React.createElement("li", null, "Count one instance per user, per topic: ", this.props.data.exclusive.toString())
+        React.createElement("li", null, "Count one instance per user, per topic: ", this.props.data.exclusive ? this.props.data.exclusive.toString() : 'false')
       )
     );
   }
