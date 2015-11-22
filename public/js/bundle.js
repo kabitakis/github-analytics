@@ -17707,8 +17707,6 @@ var vars = require('./core');
 module.exports = vars.createClass('Bar', ['getBarsAtEvent']);
 
 },{"./core":41}],41:[function(require,module,exports){
-var ReactDOM = require('react-dom')
-
 module.exports = {
   createClass: function(chartType, methodNames, dataKey) {
     var classData = {
@@ -17747,23 +17745,19 @@ module.exports = {
 
     classData.componentWillReceiveProps = function(nextProps) {
       var chart = this.state.chart;
-      if (nextProps.redraw) {
+      if (this.props.redraw) {
         chart.destroy();
         this.initializeChart(nextProps);
       } else {
         dataKey = dataKey || dataKeys[chart.name];
         updatePoints(nextProps, chart, dataKey);
-        if(chart.scale) {
-          chart.scale.xLabels = nextProps.data.labels;
-          chart.scale.calculateXLabelRotation();
-          chart.update();
-        }
+        chart.update();
       }
     };
 
     classData.initializeChart = function(nextProps) {
       var Chart = require('chart.js');
-      var el = ReactDOM.findDOMNode(this);
+      var el = this.getDOMNode();
       var ctx = el.getContext("2d");
       var chart = new Chart(ctx)[chartType](nextProps.data, nextProps.options || {});
       this.state.chart = chart;
@@ -17776,10 +17770,8 @@ module.exports = {
 
     // return the canvass element that contains the chart
     classData.getCanvass = function() {
-      return this.refs.canvass;
+      return this.refs.canvass.getDOMNode();
     };
-
-    classData.getCanvas = classData.getCanvass;
 
     var i;
     for (i=0; i<extras.length; i++) {
@@ -17805,38 +17797,22 @@ var updatePoints = function(nextProps, chart, dataKey) {
 
   if (name === 'PolarArea' || name === 'Pie' || name === 'Doughnut') {
     nextProps.data.forEach(function(segment, segmentIndex) {
-      if (!chart.segments[segmentIndex]) {
-        chart.addData(segment);
-      } else {
-        chart.segments[segmentIndex].value = segment.value;
-        chart.update();
-      }
+      chart.segments[segmentIndex].value = segment.value;
     });
   } else {
-    while (chart.scale.xLabels.length > nextProps.data.labels.length) {
-      chart.removeData();
-    }
     nextProps.data.datasets.forEach(function(set, setIndex) {
       set.data.forEach(function(val, pointIndex) {
-        if (typeof(chart.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
-          addData(nextProps, chart, setIndex, pointIndex);
-        } else {
-          chart.datasets[setIndex][dataKey][pointIndex].value = val;
-        }
+        chart.datasets[setIndex][dataKey][pointIndex].value = val;
       });
     });
   }
 };
 
-var addData = function(nextProps, chart, setIndex, pointIndex) {
-  var values = [];
-  nextProps.data.datasets.forEach(function(set) {
-    values.push(set.data[pointIndex]);
-  });
-  chart.addData(values, nextProps.data.labels[setIndex]);
-};
 
-},{"chart.js":2,"react":212,"react-dom":47}],42:[function(require,module,exports){
+
+
+
+},{"chart.js":2,"react":212}],42:[function(require,module,exports){
 var vars = require('./core');
 
 module.exports = vars.createClass('Doughnut', ['getSegmentsAtEvent']);
@@ -38318,6 +38294,14 @@ module.exports = React.createClass({displayName: "exports",
     });
     this.forceUpdate();
   },
+
+  onChartClick: function (event) {
+    var clickedBars = this.refs.issueVotesChart.state.chart.getBarsAtEvent(event);
+    var issueNo = clickedBars[0].label.split(':')[0];
+    if (window) {
+      window.open('https://github.com/'+this.props.ghParams.user+'/'+this.props.ghParams.repo+'/issues/'+issueNo);
+    }
+  },
   
   render: function () {
     return (
@@ -38341,7 +38325,7 @@ module.exports = React.createClass({displayName: "exports",
             ), 
             React.createElement("div", {className: "col-xs-12 col-md-12"}, 
               React.createElement("h2", null, "Votes per Issue ID"), 
-              React.createElement(BarChart, {data: this.props.chartData[this.state.sort], options: chartOptions})
+              React.createElement(BarChart, {ref: "issueVotesChart", data: this.props.chartData[this.state.sort], options: chartOptions, onClick: this.onChartClick, redraw: true})
             )
           )
         ), 
