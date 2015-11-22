@@ -7,6 +7,7 @@ npm install
 ./node_modules/.bin/browserify -t reactify public/*.js -o public/js/bundle.js
 GHTOKEN='YOUR_GITHUB_TOKEN' node github-analytics.js
 ```
+You can also start without a [Github Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/), however your requests will reach the [Github API Rate Limit](https://developer.github.com/v3/#rate-limiting) quickly.
 
 ## Usage
 Try the following urls to get an idea of how the app works:
