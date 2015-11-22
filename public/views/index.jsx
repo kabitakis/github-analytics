@@ -71,6 +71,14 @@ module.exports = React.createClass({
     });
     this.forceUpdate();
   },
+
+  onChartClick: function (event) {
+    var clickedBars = this.refs.issueVotesChart.state.chart.getBarsAtEvent(event);
+    var issueNo = clickedBars[0].label.split(':')[0];
+    if (window) {
+      window.open('https://github.com/'+this.props.ghParams.user+'/'+this.props.ghParams.repo+'/issues/'+issueNo);
+    }
+  },
   
   render: function () {
     return (
@@ -94,7 +102,7 @@ module.exports = React.createClass({
             </div>
             <div className="col-xs-12 col-md-12">
               <h2>Votes per Issue ID</h2>
-              <BarChart data={this.props.chartData[this.state.sort]} options={chartOptions}/>
+              <BarChart ref="issueVotesChart" data={this.props.chartData[this.state.sort]} options={chartOptions} onClick={this.onChartClick} redraw />
             </div>
           </div>
         </div>
