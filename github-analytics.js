@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res, next) {
-  var ghParams = _.isEmpty(req.query) ? config.defaultParams : req.query;
+  var ghParams = _.isEmpty(req.query) ? config.defaultParams : _.defaults(req.query, config.defaultParams);
   dataFactory.getIssueVotes(github, ghParams, function (err, data) {
     if (err) {
       res.json({error: err});
@@ -71,7 +71,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/api/issues', function (req, res) {
-  var ghParams = _.isEmpty(req.query) ? config.defaultParams : req.query;
+  var ghParams = _.isEmpty(req.query) ? config.defaultParams : _.defaults(req.query, config.defaultParams);
   dataFactory.getIssueVotes(github, ghParams, function (err, data) {
     if (err) {
       res.json({error: err});
