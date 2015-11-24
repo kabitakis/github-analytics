@@ -93,9 +93,9 @@ module.exports = React.createClass({
         </div>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12 col-md-6">
-              <div id="sortingOptions" className="btn-group" role="group">
-                <span>Sort by: </span>
+            <div id="sortingOptions" className="col-xs-12 col-md-6">
+              <span>Sort by: </span>
+              <div className="btn-group" role="group">
                 <button data-sort="byId" onClick={this.onSortUpdate} type="button" className="btn btn-default" >Issue ID</button>
                 <button data-sort="byCount" onClick={this.onSortUpdate} type="button" className="btn btn-default">Vote Count</button>
               </div>

@@ -38316,9 +38316,9 @@ module.exports = React.createClass({displayName: "exports",
         ), 
         React.createElement("div", {className: "container-fluid"}, 
           React.createElement("div", {className: "row"}, 
-            React.createElement("div", {className: "col-xs-12 col-md-6"}, 
-              React.createElement("div", {id: "sortingOptions", className: "btn-group", role: "group"}, 
-                React.createElement("span", null, "Sort by: "), 
+            React.createElement("div", {id: "sortingOptions", className: "col-xs-12 col-md-6"}, 
+              React.createElement("span", null, "Sort by: "), 
+              React.createElement("div", {className: "btn-group", role: "group"}, 
                 React.createElement("button", {"data-sort": "byId", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Issue ID"), 
                 React.createElement("button", {"data-sort": "byCount", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Vote Count")
               )
