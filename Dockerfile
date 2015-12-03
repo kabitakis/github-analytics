@@ -11,6 +11,7 @@ RUN npm install
 RUN ./node_modules/.bin/browserify -t reactify public/*.js -o public/js/bundle.js
 
 # Run node
+ENV NODE_ENV local
 ENV GHTOKEN YOUR_GITHUB_TOKEN
 CMD ["node", "github-analytics.js"]
 
