@@ -1,47 +1,13 @@
 # github-analytics
 A web application that provides beautiful charts based on data found in github issues and comments.
 
-## Configuration
-You are going to need a valid [Github Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
-
-Create your token and save it in a file:
-```bash
-echo YOUR_GITHUB_TOKEN > .env
-```
-You can also start without a [Github Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/), however your requests will reach the [Github API Rate Limit](https://developer.github.com/v3/#rate-limiting) quickly.
-
-## Installation (option 1/3)
+## Installation
 ```bash
 npm install
-```
-```bash
 ./node_modules/.bin/browserify -t reactify public/*.js -o public/js/bundle.js
+GHTOKEN='YOUR_GITHUB_TOKEN' node github-analytics.js
 ```
-```bash
-GHTOKEN="$(< .env)" NODE_ENV=production node github-analytics.js
-```
-
-## Build & run a Docker image (option 2/3)
-If you use Docker you can skip the Installation process and start with the following commands. Keep in mind you must have a node.js docker image installed (docker pull node).
-
-Build the docker image:
-```bash
-docker build -t github-analytics .
-```
-Choose the environment (NODE_ENV=local|staging|production) and run your container:
-```bash
-docker run -p 3000:3000 -e GHTOKEN="$(< .env)" -e NODE_DEV=production --name analytics01 -t github-analytics
-```
-
-## Use the Docker image (option 3/3)
-Pull the docker image:
-```bash
-docker pull kabitakis/github-analytics
-```
-Choose the environment (NODE_ENV=local|staging|production) and run your container:
-```bash
-docker run -p 3000:3000 -e GHTOKEN="$(< .env)" -e NODE_ENV=production --name analytics01 -t kabitakis/github-analytics
-```
+You can also start without a [Github Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/), however your requests will reach the [Github API Rate Limit](https://developer.github.com/v3/#rate-limiting) quickly.
 
 ## Usage
 Try the following urls to get an idea of how the app works:

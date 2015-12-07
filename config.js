@@ -9,11 +9,11 @@ var config = {
     defaultParams: {
       user: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
-      labels: 'Topics',
+      //labels: 'Topics',
       state: 'open',
       term: ':+1:',
       exclusive: true,
-      per_page: 100
+      per_page: 1000
     }
   },
   staging: {

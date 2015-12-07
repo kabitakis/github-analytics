@@ -7,7 +7,8 @@
     "start": "NODE_ENV=production node github-analytics.js",
     "dev": "NODE_ENV=local nodemon github-analytics.js",
     "debug": "NODE_ENV=local nodemon --debug github-analytics.js",
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "browserify -t reactify public/index.js -o public/js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -29,19 +30,22 @@
   "homepage": "https://github.com/kabitakis/github-analytics",
   "dependencies": {
     "async": "^1.4.2",
+    "bluebird": "^3.0.6",
+    "browserify": "^12.0.1",
     "chart.js": "^1.0.2",
     "express": "^4.13.3",
     "github": "^0.2.4",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "node-jsx": "^0.13.3",
+    "object-assign": "^4.0.1",
     "react": "^0.14.3",
     "react-chartjs": "^0.6.0",
+    "react-dom": "^0.14.3",
     "react-engine": "^2.6.0",
     "react-router": "^0.13.5",
     "reactify": "^1.1.1",
-    "browserify": "^12.0.1",
-    "react-dom": "^0.14.3"
+    "tentacles-streams": "^0.1.6"
   },
   "browserify": {
     "transform": [

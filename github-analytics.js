@@ -9,16 +9,18 @@ var _ = require('lodash');
 var config = require('./config');
 var dataFactory = require('./dataFactory');
 
-var GitHubApi = require("github");
+var GitHubApi = require('github');
 var github = new GitHubApi({
-    version: "3.0.0" // required
+  version: "3.0.0" // required
 });
+var TentaclesStreams = require('tentacles-streams');
+var tentacles = new TentaclesStreams({ accessToken: config.github_token });
 
 var app = express();
 
 var engineOptions = {
   // optional if not using react-router
-  // reactRoutes: 'PATH_TO_REACT_ROUTER_ROUTE_DECLARATION' 
+  // reactRoutes: 'PATH_TO_REACT_ROUTER_ROUTE_DECLARATION'
 };
 
 // set `react-engine` as the view engine
@@ -53,7 +55,7 @@ app.use(function (req, res, next) {
 
 app.get('/', function (req, res, next) {
   var ghParams = _.isEmpty(req.query) ? config.defaultParams : _.defaults(req.query, config.defaultParams);
-  dataFactory.getIssueVotes(github, ghParams, function (err, data) {
+  dataFactory.getIssueVotes(github, tentacles, ghParams, function (err, data) {
     if (err) {
       res.json({error: err});
     } else {
@@ -72,7 +74,7 @@ app.get('/', function (req, res, next) {
 
 app.get('/api/issues', function (req, res) {
   var ghParams = _.isEmpty(req.query) ? config.defaultParams : _.defaults(req.query, config.defaultParams);
-  dataFactory.getIssueVotes(github, ghParams, function (err, data) {
+  dataFactory.getIssueVotes(github, tentacles, ghParams, function (err, data) {
     if (err) {
       res.json({error: err});
     } else {

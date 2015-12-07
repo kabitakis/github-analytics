@@ -1,61 +1,84 @@
 'use strict'
 
+var Promise = require('bluebird');
+var objectAssign = require('object-assign');
 var async = require('async');
 var moment = require('moment');
 var _ = require('lodash');
 var config = require('./config');
 
-function getIssueVotes (github, params, callback) {
-  github.issues.repoIssues(params, function(err, issues){
-    if (err) {
-      console.log(err);
-      callback(err, null);
-    } else {
-      var allComments = {};
-      async.each(issues, function(issue, cb){
-        console.log(issue.number);
-        github.issues.getComments({
-          user: params.user,
-          repo: params.repo,
-          number: issue.number,
-          per_page: params.per_page
-        }, function(err, comments){
-          if (err) {
-            console.log(err);
-            cb();
-          } else {
-            var votes = [];
-            comments.forEach(function(comment, i){
-              // Lookup for term in comments and don't count multiple terms
-              // from the same login, if exclusive is set.
-              if (comment.body.indexOf(params.term) !== -1 &&
-                  (!params.exclusive || votes.indexOf(comment.user.login) < 0) ) {
-                votes.push(comment.user.login);
-              }
-            });
-            allComments[issue.number] = {
-              title: issue.title,
-              html_url: issue.html_url,
-              created_at: issue.created_at,
-              votes: votes,
-              voteCount: votes.length
-              //comments: comments
-            };
-            console.log(comments.length);
-            cb();
+
+
+
+function getIssueVotes (github, tentacles, params, callback) {
+  console.log('params', params);
+
+  var getRepoIssues = Promise.promisify(github.issues.repoIssues);
+  var getComments = Promise.promisify(github.issues.getComments);
+
+  var stream = tentacles.issue.listForRepo(params.user + '/' + params.repo, {});
+
+  var processingDataPromiseList = [];
+
+  var allComments = {};
+
+  stream.on('data', function(issue) {
+    //console.log(issue);
+
+    var processingCommentsPromise = getComments({
+        user: params.user,
+        repo: params.repo,
+        number: issue.number,
+        per_page: params.per_page
+      })
+      .then(function(comments) {
+        var votes = [];
+        comments.forEach(function(comment, i) {
+          // Lookup for term in comments and don't count multiple terms
+          // from the same login, if exclusive is set.
+          if (
+            comment.body.indexOf(params.term) !== -1 &&
+            (!params.exclusive || votes.indexOf(comment.user.login) < 0)
+          ) {
+            votes.push(comment.user.login);
           }
         });
-      }, function(err){
-        if(err){
-          console.log('Failed to process all issues');
-          callback(err, null);
-        } else {
-          console.log('All issues have been processed successfully');
-          callback(null, allComments);
+
+        /* */
+        // Filter out issues that don't have any votes
+        if(votes.length > 0) {
+          allComments[issue.number] = {
+            title: issue.title,
+            html_url: issue.html_url,
+            created_at: issue.created_at,
+            votes: votes,
+            voteCount: votes.length
+            //comments: comments
+          };
         }
+        /* */
       });
-    }
+
+    processingDataPromiseList.push(processingCommentsPromise);
+
   });
+
+  stream.on('end', function() {
+    console.log('end');
+
+    Promise.all(processingDataPromiseList)
+      .then(function() {
+        console.log('done processing all data');
+        callback(null, allComments);
+      })
+  });
+
+  stream.on('error', function(err) {
+    callback(err, null);
+  });
+
+
+
 }
 
 function toVoteCountChartData (data) {
