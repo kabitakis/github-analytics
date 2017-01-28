@@ -11,7 +11,7 @@ var config = {
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
-      term: ':+1:',
+      terms: ['👍', ':+1:'],
       exclusive: true,
       per_page: 100
     }
@@ -28,7 +28,7 @@ var config = {
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
-      term: ':+1:',
+      terms: ['👍', ':+1:'],
       exclusive: true,
       per_page: 100
     }
@@ -45,7 +45,7 @@ var config = {
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
-      term: ':+1:',
+      terms: ['👍', ':+1:'],
       exclusive: true,
       per_page: 100
     }
