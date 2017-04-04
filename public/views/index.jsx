@@ -11,12 +11,13 @@ var BarChart = require("react-chartjs").Bar;
 var InfoPanel = React.createClass({
 
   render: function(){
+    var terms = this.props.data.terms.join(", ");
     return (
       <ul>
         <li>Repository: <a href={"https://github.com/"+this.props.data.user+"/"+this.props.data.repo} target="_blank">/{this.props.data.user}/{this.props.data.repo}</a></li>
         <li>Issue Labels: {this.props.data.labels}</li>
         <li>Issue State: {this.props.data.state}</li>
-        <li>Search term: {this.props.data.term}</li>
+        <li>Search terms: {terms}</li>
         <li>Count one instance per user, per topic: {this.props.data.exclusive ? this.props.data.exclusive.toString() : 'false'}</li>
       </ul>
     );

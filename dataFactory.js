@@ -26,12 +26,15 @@ function getIssueVotes (github, params, callback) {
           } else {
             var votes = [];
             comments.forEach(function(comment, i){
-              // Lookup for term in comments and don't count multiple terms
-              // from the same login, if exclusive is set.
-              if (comment.body.indexOf(params.term) !== -1 &&
-                  (!params.exclusive || votes.indexOf(comment.user.login) < 0) ) {
-                votes.push(comment.user.login);
-              }
+              // Lookup for the terms in comments and don't count
+              // multiple terms from the same login, if exclusive is
+              // set.
+              params.terms.forEach(function(term, i){
+                if (comment.body.indexOf(term) !== -1 &&
+                    (!params.exclusive || votes.indexOf(comment.user.login) < 0) ) {
+                  votes.push(comment.user.login);
+                }
+              });
             });
             allComments[issue.number] = {
               title: issue.title,
