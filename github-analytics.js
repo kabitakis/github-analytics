@@ -10,9 +10,7 @@ var config = require('./config');
 var dataFactory = require('./dataFactory');
 
 var GitHubApi = require("github");
-var github = new GitHubApi({
-    version: "3.0.0" // required
-});
+var github = new GitHubApi();
 
 var app = express();
 
@@ -45,7 +43,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (req, res, next) {
-  github.misc.rateLimit({}, function(err, result) {
+  github.misc.getRateLimit({}, function(err, result) {
     console.log('Github API rate limit: ', result);
     next();
   });
@@ -57,7 +55,6 @@ app.get('/', function (req, res, next) {
     if (err) {
       res.json({error: err});
     } else {
-
       var chartData = dataFactory.toVoteCountChartData(data);
 
       res.render('index', {

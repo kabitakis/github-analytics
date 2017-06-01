@@ -6,16 +6,22 @@ var _ = require('lodash');
 var config = require('./config');
 
 function getIssueVotes (github, params, callback) {
-  github.issues.repoIssues(params, function(err, issues){
+  github.issues.getForRepo({
+          owner: params.owner,
+          repo: params.repo,
+          state: params.state,
+          labels: params.labels,
+          per_page: params.per_page
+  }, function(err, issues){
     if (err) {
       console.log(err);
       callback(err, null);
     } else {
       var allComments = {};
-      async.each(issues, function(issue, cb){
+      async.each(issues.data, function(issue, cb){
         console.log(issue.number);
         github.issues.getComments({
-          user: params.user,
+          owner: params.owner,
           repo: params.repo,
           number: issue.number,
           per_page: params.per_page
@@ -25,7 +31,28 @@ function getIssueVotes (github, params, callback) {
             cb();
           } else {
             var votes = [];
-            comments.forEach(function(comment, i){
+            var speakers = [];
+            github.reactions.getForIssue({
+              owner: params.owner,
+              repo: params.repo,
+              number: issue.number
+            }, function(err, reactions){
+              if (err) {
+                console.log(err);
+              } else {
+                params.reactionVotes.forEach(function(term, i){
+                  reactions.data.forEach(function(reaction, j){
+                    if (reaction.content === term &&
+                      !params.exclusive || votes.indexOf(reaction.user.login) < 0 ) {
+                      votes.push(reaction.user.login);
+                    }
+                    allComments[issue.number].voteCount = votes.length;
+                  });
+                });
+              }
+            });
+
+            comments.data.forEach(function(comment, i){
               // Lookup for the terms in comments and don't count
               // multiple terms from the same login, if exclusive is
               // set.
@@ -35,16 +62,30 @@ function getIssueVotes (github, params, callback) {
                   votes.push(comment.user.login);
                 }
               });
+              params.speakerTerms.forEach(function(term, i){
+                if (comment.body.indexOf(term) !== -1 &&
+                    (!params.exclusive || speakers.indexOf(comment.user.login) < 0) ) {
+                  speakers.push(comment.user.login);
+                }
+              });
+            });
+            params.speakerTerms.forEach(function(term, i){
+              if (issue.body.indexOf(term) !== -1 &&
+                  (!params.exclusive || speakers.indexOf(issue.user.login) < 0) ) {
+                speakers.push(issue.user.login);
+              }
             });
             allComments[issue.number] = {
               title: issue.title,
               html_url: issue.html_url,
               created_at: issue.created_at,
               votes: votes,
-              voteCount: votes.length
+              speakers: speakers,
+              voteCount: votes.length,
+              speakerCount: speakers.length
               //comments: comments
             };
-            console.log(comments.length);
+            console.log(comments.data.length);
             cb();
           }
         });
@@ -72,6 +113,14 @@ function toVoteCountChartData (data) {
         highlightFill: "rgba(42,144,159,0.9)",
         highlightStroke: "rgba(42,144,159,1)",
         data: []
+      },
+      {
+        label: "Speakers",
+        fillColor: "rgba(151,107,177,0.7)",
+        strokeColor: "rgba(151,107,177,0.9)",
+        highlightFill: "rgba(151,107,177,0.9)",
+        highlightStroke: "rgba(151,107,177,1)",
+        data: []
       }
     ]
   };
@@ -79,29 +128,42 @@ function toVoteCountChartData (data) {
   var chartData = {
     byId: _.cloneDeep(initData),
     byCount: _.cloneDeep(initData),
+    bySpeaker: _.cloneDeep(initData),
     byDate: _.cloneDeep(initData)
   };
 
   _.forEach(data, function(v, k) {
-    chartData.byId.labels.push(k + ': ' + v.title.substring(0, 12));
+    chartData.byId.labels.push(k + ': ' + v.title.substring(0, 20));
     chartData.byId.datasets[0].data.push(v.voteCount);
+    chartData.byId.datasets[1].data.push(v.speakerCount);
   });
 
   // Sort by popularity
   var zipped = [], i;
+  var speakzipped = [];
 
   // pack the two arrays in one
   for(i=0; i<chartData.byId.labels.length; ++i) {
     zipped.push({
         label: chartData.byId.labels[i],
-        value: chartData.byId.datasets[0].data[i]
+        value: chartData.byId.datasets[0].data[i],
+        speakers: chartData.byId.datasets[1].data[i]
     });
   }
+  speakzipped = _.cloneDeep(zipped);
 
-  // Sort the packed array in descending order
+  // Sort the packed array in descending order according to vote
   zipped.sort(function(left, right) {
       var leftValue  = left.value,
           rightValue = right.value;
+
+      return leftValue === rightValue ? 0 : (leftValue < rightValue ? 1 : -1);
+  });
+
+  // Sort the packed array in descending order according to speaker
+  speakzipped.sort(function(left, right) {
+      var leftValue  = left.speakers,
+          rightValue = right.speakers;
 
       return leftValue === rightValue ? 0 : (leftValue < rightValue ? 1 : -1);
   });
@@ -110,6 +172,10 @@ function toVoteCountChartData (data) {
   for(i=0; i<zipped.length; ++i) {
       chartData.byCount.labels.push(zipped[i].label);
       chartData.byCount.datasets[0].data.push(zipped[i].value);
+      chartData.byCount.datasets[1].data.push(zipped[i].speakers);
+      chartData.bySpeaker.labels.push(speakzipped[i].label);
+      chartData.bySpeaker.datasets[0].data.push(speakzipped[i].value);
+      chartData.bySpeaker.datasets[1].data.push(speakzipped[i].speakers);
   }
 
   return chartData;
@@ -117,5 +183,5 @@ function toVoteCountChartData (data) {
 
 module.exports = {
   getIssueVotes: getIssueVotes,
-  toVoteCountChartData: toVoteCountChartData
+  toVoteCountChartData: toVoteCountChartData,
 };
