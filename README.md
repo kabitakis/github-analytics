@@ -56,8 +56,8 @@ Try the following urls to get an idea of how the app works:
 * labels (String): Optional. String list of comma separated Label names. Example: "bug,ui,@high"
 * state (String): Optional. open, closed, or all Validation rule: ^(open|closed|all)$.
 * terms (array of Strings): Required. The terms to search for votes in the comments of the issues.
-* terms (array of Strings): Required. The terms to search for speakers in the comments of the issues.
-* terms (array of Strings): Required. The reactions that correspond to votes of the issue.
+* speakerTerms (array of Strings): Required. The terms to search for speakers in the comments of the issues.
+* reactionVotes (array of Strings): Required. The reactions that correspond to votes of the issue.
 * exclusive (Boolean): Optional. Count terms per user rather than per comment. Can be either ommited (false) or set to 1 (true).
 * per_page (Number): Optional. A custom page size up to 100. Default is 30. Validation rule: ^[0-9]+$.
 
