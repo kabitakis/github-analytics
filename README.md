@@ -47,15 +47,17 @@ docker run -p 3000:3000 -e GHTOKEN="$(< .env)" -e NODE_ENV=production --name ana
 Try the following urls to get an idea of how the app works:
 * http://localhost:3000
 * http://localhost:3000/api/issues
-* http://localhost:3000/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&terms[]=:%2B1:&terms[]=test&exclusive=1&per_page=100
-* http://localhost:3000/api/issues/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&terms[]=:%2B1:&exclusive=1&per_page=100
+* http://localhost:3000/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&terms[]=:%2B1:&terms[]=test&speakerTerms[]=testing&reactionVotes[]='-1'&exclusive=1&per_page=100
+* http://localhost:3000/api/issues/?user=devstaff-crete&repo=DevStaff-Heraklion&labels=Topics&state=open&terms[]=:%2B1:&terms[]=test&speakerTerms[]=testing&reactionVotes[]='-1'&exclusive=1&per_page=100
 
 ### Params
 * user (String): Required.
 * repo (String): Required.
 * labels (String): Optional. String list of comma separated Label names. Example: "bug,ui,@high"
 * state (String): Optional. open, closed, or all Validation rule: ^(open|closed|all)$.
-* terms (array of Strings): Required. The terms to search for in the comments of the issues.
+* terms (array of Strings): Required. The terms to search for votes in the comments of the issues.
+* terms (array of Strings): Required. The terms to search for speakers in the comments of the issues.
+* terms (array of Strings): Required. The reactions that correspond to votes of the issue.
 * exclusive (Boolean): Optional. Count terms per user rather than per comment. Can be either ommited (false) or set to 1 (true).
 * per_page (Number): Optional. A custom page size up to 100. Default is 30. Validation rule: ^[0-9]+$.
 

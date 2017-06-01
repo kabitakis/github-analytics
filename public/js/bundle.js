@@ -17620,6 +17620,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -24328,7 +24332,7 @@ var LinkedValueUtils = {
   checkPropTypes: function (tagName, props, owner) {
     for (var propName in propTypes) {
       if (propTypes.hasOwnProperty(propName)) {
-        var error = propTypes[propName](props, propName, tagName, ReactPropTypeLocations.prop);
+        var error = propTypes[propName](props, propName, tagName, ReactPropTypeLocations.prop, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
       }
       if (error instanceof Error && !(error.message in loggedTypeFailures)) {
         // Only monitor this failure once because there tends to be a lot of the
@@ -26642,7 +26646,7 @@ var ReactCompositeComponentMixin = {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
           !(typeof propTypes[propName] === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s: %s type `%s` is invalid; it must be a function, usually ' + 'from React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames[location], propName) : invariant(false) : undefined;
-          error = propTypes[propName](props, propName, componentName, location);
+          error = propTypes[propName](props, propName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
         } catch (ex) {
           error = ex;
         }
@@ -30360,7 +30364,7 @@ function checkPropTypes(componentName, propTypes, props, location) {
         // This is intentionally an invariant that gets caught. It's the same
         // behavior as without this statement except with a better message.
         !(typeof propTypes[propName] === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames[location], propName) : invariant(false) : undefined;
-        error = propTypes[propName](props, propName, componentName, location);
+        error = propTypes[propName](props, propName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
       } catch (ex) {
         error = ex;
       }
@@ -33527,7 +33531,7 @@ function createArrayOfTypeChecker(typeChecker) {
       return new Error('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
     }
     for (var i = 0; i < propValue.length; i++) {
-      var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']');
+      var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
       if (error instanceof Error) {
         return error;
       }
@@ -33593,7 +33597,7 @@ function createObjectOfTypeChecker(typeChecker) {
     }
     for (var key in propValue) {
       if (propValue.hasOwnProperty(key)) {
-        var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key);
+        var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
         if (error instanceof Error) {
           return error;
         }
@@ -33614,7 +33618,7 @@ function createUnionTypeChecker(arrayOfTypeCheckers) {
   function validate(props, propName, componentName, location, propFullName) {
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
-      if (checker(props, propName, componentName, location, propFullName) == null) {
+      if (checker(props, propName, componentName, location, propFullName, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED') == null) {
         return null;
       }
     }
@@ -33649,7 +33653,7 @@ function createShapeTypeChecker(shapeTypes) {
       if (!checker) {
         continue;
       }
-      var error = checker(propValue, key, componentName, location, propFullName + '.' + key);
+      var error = checker(propValue, key, componentName, location, propFullName + '.' + key, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
       if (error) {
         return error;
       }
@@ -34811,7 +34815,7 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '0.14.8';
+module.exports = '0.14.9';
 },{}],168:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -38603,17 +38607,22 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('lodash');
 var BarChart = require("react-chartjs").Bar;
+var SpeakersBarChart = require("react-chartjs").Bar;
 
 var InfoPanel = React.createClass({displayName: "InfoPanel",
 
   render: function(){
     var terms = this.props.data.terms.join(", ");
+    var speakerTerms = this.props.data.speakerTerms.join(", ");
+    var reactionVotes = this.props.data.reactionVotes.join(", ");
     return (
       React.createElement("ul", null, 
-        React.createElement("li", null, "Repository: ", React.createElement("a", {href: "https://github.com/"+this.props.data.user+"/"+this.props.data.repo, target: "_blank"}, "/", this.props.data.user, "/", this.props.data.repo)), 
+        React.createElement("li", null, "Repository: ", React.createElement("a", {href: "https://github.com/"+this.props.data.owner+"/"+this.props.data.repo, target: "_blank"}, "/", this.props.data.owner, "/", this.props.data.repo)), 
         React.createElement("li", null, "Issue Labels: ", this.props.data.labels), 
         React.createElement("li", null, "Issue State: ", this.props.data.state), 
         React.createElement("li", null, "Search terms: ", terms), 
+        React.createElement("li", null, "Speaker Search terms: ", speakerTerms), 
+        React.createElement("li", null, "Reactions: ", reactionVotes), 
         React.createElement("li", null, "Count one instance per user, per topic: ", this.props.data.exclusive ? this.props.data.exclusive.toString() : 'false')
       )
     );
@@ -38621,7 +38630,7 @@ var InfoPanel = React.createClass({displayName: "InfoPanel",
 });
 
 var IssueInfoBox = React.createClass({displayName: "IssueInfoBox",
-
+  
   renderItem: function(issue){
     return (
       React.createElement("div", {className: "issue"}, 
@@ -38631,9 +38640,9 @@ var IssueInfoBox = React.createClass({displayName: "IssueInfoBox",
         ), 
         React.createElement("div", {className: "allUsers"}, 
           React.createElement("b", null, "Users: "), 
-          issue.votes.map(function(user, i) {
+          issue.votes.map(function(owner, i) {
             return (
-              React.createElement("span", {className: "user", key: i}, user, " ")
+              React.createElement("span", {className: "owner", key: i}, owner, " ")
             );
           })
         )
@@ -38661,7 +38670,7 @@ module.exports = React.createClass({displayName: "exports",
       sort: 'byId'
     };
   },
-
+  
   onSortUpdate: function (event) {
     this.setState({
       sort: event.target.dataset.sort
@@ -38673,10 +38682,10 @@ module.exports = React.createClass({displayName: "exports",
     var clickedBars = this.refs.issueVotesChart.state.chart.getBarsAtEvent(event);
     var issueNo = clickedBars[0].label.split(':')[0];
     if (window) {
-      window.open('https://github.com/'+this.props.ghParams.user+'/'+this.props.ghParams.repo+'/issues/'+issueNo);
+      window.open('https://github.com/'+this.props.ghParams.owner+'/'+this.props.ghParams.repo+'/issues/'+issueNo);
     }
   },
-
+  
   render: function () {
     return (
       React.createElement(Layout, React.__spread({},  this.props), 
@@ -38690,11 +38699,12 @@ module.exports = React.createClass({displayName: "exports",
         ), 
         React.createElement("div", {className: "container-fluid"}, 
           React.createElement("div", {className: "row"}, 
-            React.createElement("div", {id: "sortingOptions", className: "col-xs-12 col-md-6"}, 
+            React.createElement("div", {className: "sortingOptions col-xs-12 col-md-6"}, 
               React.createElement("span", null, "Sort by: "), 
               React.createElement("div", {className: "btn-group", role: "group"}, 
                 React.createElement("button", {"data-sort": "byId", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Issue ID"), 
-                React.createElement("button", {"data-sort": "byCount", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Vote Count")
+                React.createElement("button", {"data-sort": "byCount", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Vote Count"),
+                React.createElement("button", {"data-sort": "bySpeaker", onClick: this.onSortUpdate, type: "button", className: "btn btn-default"}, "Speaker Count")
               )
             ), 
             React.createElement("div", {className: "col-xs-11 col-md-11"}, 

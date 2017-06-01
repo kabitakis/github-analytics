@@ -7,11 +7,13 @@ var config = {
     memcached_host: "127.0.0.1:11211",
     deployType:'development',
     defaultParams: {
-      user: 'devstaff-crete',
+      owner: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
       terms: ['👍', ':+1:'],
+      speakerTerms: ['🔈', ':speaker:'],
+      reactionVotes: ['+1'],
       exclusive: true,
       per_page: 100
     }
@@ -24,11 +26,13 @@ var config = {
     memcached_host: "127.0.0.1:11211",
     deployType:'staging',
     defaultParams: {
-      user: 'devstaff-crete',
+      owner: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
       terms: ['👍', ':+1:'],
+      speakerTerms: ['🔈', ':speaker:'],
+      reactionVotes: ['+1'],
       exclusive: true,
       per_page: 100
     }
@@ -41,11 +45,13 @@ var config = {
     memcached_host: "127.0.0.1:11211",
     deployType:'production',
     defaultParams: {
-      user: 'devstaff-crete',
+      owner: 'devstaff-crete',
       repo: 'DevStaff-Heraklion',
       labels: 'Topics',
       state: 'open',
       terms: ['👍', ':+1:'],
+      speakerTerms: ['🔈', ':speaker:'],
+      reactionVotes: ['+1'],
       exclusive: true,
       per_page: 100
     }

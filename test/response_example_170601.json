@@ -1,0 +1,624 @@
+{
+  "29": {
+    "title": "Continuous Integration",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/29",
+    "created_at": "2015-07-10T23:15:34Z",
+    "votes": [
+      "gsaslis",
+      "karvounistas",
+      "sonaht",
+      "zakkak",
+      "webdevgr",
+      "irinikp",
+      "kormic",
+      "DaKnOb",
+      "kmgalanakis",
+      "ggeorgop",
+      "npapnet",
+      "padeler",
+      "sstauross",
+      "flouris",
+      "mikedi",
+      "AndronikiEnartia",
+      "Pepemakis",
+      "kritsot",
+      "gvre",
+      "Sifis-Develop",
+      "msti",
+      "angeletos",
+      "maninak",
+      "pappaschris",
+      "markop"
+    ],
+    "speakers": [
+      "gsaslis",
+      "agougousis"
+    ],
+    "voteCount": 25,
+    "speakerCount": 2
+  },
+  "30": {
+    "title": "Deep Learning",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/30",
+    "created_at": "2015-07-11T09:34:13Z",
+    "votes": [
+      "nkyriazis",
+      "padeler",
+      "greenman18523",
+      "EraserheadX",
+      "papoutsakos",
+      "ggeorgop",
+      "frcr",
+      "sonaht",
+      "kabitakis",
+      "webdevgr",
+      "msti",
+      "npasadakis",
+      "sstauross",
+      "zakkak",
+      "ManosGEM",
+      "kabutz",
+      "stivaktakis"
+    ],
+    "speakers": [],
+    "voteCount": 17,
+    "speakerCount": 0
+  },
+  "34": {
+    "title": "Docker and alternatives",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/34",
+    "created_at": "2015-07-15T08:44:59Z",
+    "votes": [
+      "DaKnOb",
+      "gsaslis",
+      "kabitakis",
+      "sonaht",
+      "maounis",
+      "msti",
+      "webdevgr",
+      "markop",
+      "irinikp"
+    ],
+    "speakers": [],
+    "voteCount": 9,
+    "speakerCount": 0
+  },
+  "47": {
+    "title": "Django Basics: Building a simple web application",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/47",
+    "created_at": "2015-09-10T22:11:07Z",
+    "votes": [
+      "zakkak",
+      "gsaslis",
+      "sonaht",
+      "padeler",
+      "kritsot",
+      "irinikp",
+      "EraserheadX",
+      "kabitakis",
+      "webdevgr",
+      "sugarenia",
+      "gfragiadoulakis",
+      "DaKnOb",
+      "Archimidis",
+      "ggeorgop",
+      "ariel2023",
+      "ekartsak",
+      "nikcxs",
+      "mikedi",
+      "sstauross",
+      "ChristosM32",
+      "sifalios",
+      "Sifis-Develop",
+      "StVak",
+      "msti",
+      "christophad"
+    ],
+    "speakers": [],
+    "voteCount": 25,
+    "speakerCount": 0
+  },
+  "50": {
+    "title": "LaTeX",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/50",
+    "created_at": "2015-09-23T01:00:22Z",
+    "votes": [
+      "padeler",
+      "tzermias",
+      "gfragiadoulakis",
+      "webdevgr",
+      "ekartsak",
+      "hrysakis",
+      "EraserheadX",
+      "ManosGEM",
+      "gsaslis"
+    ],
+    "speakers": [],
+    "voteCount": 9,
+    "speakerCount": 0
+  },
+  "87": {
+    "title": "Functional Programming in PHP",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/87",
+    "created_at": "2016-01-05T21:17:00Z",
+    "votes": [
+      "zakkak",
+      "kapolos",
+      "nikos90",
+      "padeler",
+      "sonaht",
+      "irinikp",
+      "kritsot",
+      "ariel2023",
+      "webdevgr",
+      "StVak",
+      "npapnet",
+      "kmgalanakis",
+      "kboutsika",
+      "svelon"
+    ],
+    "speakers": [],
+    "voteCount": 14,
+    "speakerCount": 0
+  },
+  "101": {
+    "title": "Orthopaedic problems associated with Development - Good practices to avoid them",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/101",
+    "created_at": "2016-02-10T10:22:49Z",
+    "votes": [
+      "zakkak",
+      "sstauross",
+      "gsaslis",
+      "webdevgr",
+      "estavrak",
+      "EraserheadX",
+      "npasadakis",
+      "sbehnsen",
+      "sugarenia",
+      "msti",
+      "xilourgos",
+      "maninak"
+    ],
+    "speakers": [
+      "zakkak"
+    ],
+    "voteCount": 12,
+    "speakerCount": 1
+  },
+  "104": {
+    "title": "Handlebars.js",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/104",
+    "created_at": "2016-02-17T21:20:55Z",
+    "votes": [
+      "sstauross",
+      "ariel2023",
+      "webdevgr",
+      "sonaht",
+      "sugarenia",
+      "maninak",
+      "irinikp"
+    ],
+    "speakers": [
+      "skananitos"
+    ],
+    "voteCount": 7,
+    "speakerCount": 1
+  },
+  "107": {
+    "title": "Working for the EU",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/107",
+    "created_at": "2016-03-15T13:32:54Z",
+    "votes": [
+      "sstauross",
+      "kritsot",
+      "ariel2023",
+      "webdevgr",
+      "Pepemakis",
+      "estavrak",
+      "svelon",
+      "gvre",
+      "marinaG0",
+      "msti",
+      "agougousis",
+      "irinikp",
+      "ManosGEM"
+    ],
+    "speakers": [
+      "skananitos"
+    ],
+    "voteCount": 13,
+    "speakerCount": 1
+  },
+  "119": {
+    "title": "Social Engineering & Physical Security",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/119",
+    "created_at": "2016-05-18T15:55:04Z",
+    "votes": [
+      "DaKnOb",
+      "maounis",
+      "gvre",
+      "webdevgr",
+      "zakkak",
+      "konchalas",
+      "Archimidis",
+      "irinikp",
+      "ariel2023",
+      "estavrak",
+      "flouris",
+      "msti",
+      "ManosGEM",
+      "nikos445",
+      "markop",
+      "maninak",
+      "kapolos"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "estavrak"
+    ],
+    "voteCount": 17,
+    "speakerCount": 2
+  },
+  "144": {
+    "title": "Developing and Maintaining Open Source Software",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/144",
+    "created_at": "2016-10-16T10:52:29Z",
+    "votes": [
+      "DaKnOb",
+      "sbehnsen",
+      "zakkak",
+      "sonaht",
+      "padeler",
+      "gvre",
+      "sstauross",
+      "EraserheadX",
+      "gsaslis",
+      "sugarenia",
+      "flouris",
+      "ariel2023",
+      "mikedi",
+      "msti",
+      "svelon",
+      "irinikp",
+      "ManosGEM",
+      "kounelios13",
+      "maninak",
+      "panosmk",
+      "Archimidis"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "zakkak"
+    ],
+    "voteCount": 21,
+    "speakerCount": 2
+  },
+  "145": {
+    "title": "Bitcoin, blockchain and the future",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/145",
+    "created_at": "2016-10-19T08:47:19Z",
+    "votes": [
+      "sonaht",
+      "DaKnOb",
+      "msti",
+      "sugarenia",
+      "Pepemakis",
+      "flouris",
+      "maounis",
+      "padeler",
+      "dsiganos",
+      "estavrak",
+      "EraserheadX",
+      "sstauross",
+      "mikedi",
+      "svelon",
+      "irinikp",
+      "ManosGEM",
+      "npapnet",
+      "gsaslis",
+      "maninak",
+      "panosmk"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "maounis"
+    ],
+    "voteCount": 20,
+    "speakerCount": 2
+  },
+  "149": {
+    "title": "Automated Vulnerability Scanning",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/149",
+    "created_at": "2016-10-24T13:39:54Z",
+    "votes": [
+      "DaKnOb",
+      "maounis",
+      "zakkak",
+      "irinikp",
+      "sonaht",
+      "gvre",
+      "flouris",
+      "estavrak",
+      "EraserheadX",
+      "gsaslis",
+      "mikedi",
+      "msti",
+      "agougousis",
+      "angeletos",
+      "ManosGEM",
+      "nikos445",
+      "dzervas",
+      "maninak",
+      "Archimidis"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "estavrak"
+    ],
+    "voteCount": 19,
+    "speakerCount": 2
+  },
+  "150": {
+    "title": "Microservices",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/150",
+    "created_at": "2016-10-27T13:42:59Z",
+    "votes": [
+      "sonaht",
+      "maounis",
+      "DaKnOb",
+      "gvre",
+      "Archimidis",
+      "ariel2023",
+      "msti",
+      "agougousis",
+      "flouris",
+      "sstauross",
+      "webdevgr",
+      "padeler",
+      "irinikp",
+      "pappaschris",
+      "panosmk",
+      "JChrist",
+      "mzampetakis"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "Archimidis",
+      "gsaslis"
+    ],
+    "voteCount": 17,
+    "speakerCount": 3
+  },
+  "152": {
+    "title": "PHP frameworks",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/152",
+    "created_at": "2016-11-04T10:29:37Z",
+    "votes": [
+      "DaKnOb",
+      "gvre",
+      "svelon",
+      "sstauross",
+      "staurosm",
+      "agougousis",
+      "Archimidis",
+      "webdevgr",
+      "estavrak",
+      "irinikp",
+      "eepitropaki",
+      "mzampetakis"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "svelon",
+      "agougousis"
+    ],
+    "voteCount": 12,
+    "speakerCount": 3
+  },
+  "156": {
+    "title": "Opensource E-shops",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/156",
+    "created_at": "2016-11-07T15:02:00Z",
+    "votes": [
+      "svelon",
+      "sonaht",
+      "gvre",
+      "webdevgr",
+      "iotheo",
+      "sstauross",
+      "ggeorg0p",
+      "maounis",
+      "flouris",
+      "irinikp",
+      "panosmk",
+      "mijalis"
+    ],
+    "speakers": [],
+    "voteCount": 12,
+    "speakerCount": 0
+  },
+  "158": {
+    "title": "Gamification",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/158",
+    "created_at": "2016-12-15T12:26:40Z",
+    "votes": [
+      "maounis",
+      "zakkak",
+      "gsaslis",
+      "sonaht",
+      "padeler",
+      "svelon",
+      "VasilisGkogkidis",
+      "sstauross",
+      "gvre",
+      "Archimidis",
+      "irinikp",
+      "flouris",
+      "msti",
+      "ManosGEM",
+      "nikos445",
+      "mijalis"
+    ],
+    "speakers": [
+      "sonaht",
+      "VasilisGkogkidis"
+    ],
+    "voteCount": 16,
+    "speakerCount": 2
+  },
+  "161": {
+    "title": "System and Cluster monitoring",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/161",
+    "created_at": "2017-01-25T16:51:44Z",
+    "votes": [
+      "zakkak",
+      "filipslavik",
+      "gvre",
+      "DaKnOb",
+      "sonaht",
+      "estavrak",
+      "gsaslis",
+      "padeler",
+      "flouris",
+      "alexzzzboom",
+      "Archimidis",
+      "ManosGEM",
+      "nikos445",
+      "mijalis"
+    ],
+    "speakers": [
+      "zakkak"
+    ],
+    "voteCount": 14,
+    "speakerCount": 1
+  },
+  "165": {
+    "title": "Asynchronous programming and...PHP",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/165",
+    "created_at": "2017-02-05T22:07:16Z",
+    "votes": [
+      "webdevgr",
+      "agougousis",
+      "gvre",
+      "svelon",
+      "irinikp",
+      "nmichalakis",
+      "padeler",
+      "mzampetakis",
+      "mijalis"
+    ],
+    "speakers": [
+      "agougousis"
+    ],
+    "voteCount": 9,
+    "speakerCount": 1
+  },
+  "170": {
+    "title": "Apache Spark",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/170",
+    "created_at": "2017-03-02T14:52:25Z",
+    "votes": [
+      "gvre",
+      "DaKnOb",
+      "webdevgr",
+      "ManosGEM",
+      "nikos445",
+      "flouris",
+      "gsaslis",
+      "sonaht",
+      "ealefrag",
+      "Archimidis"
+    ],
+    "speakers": [
+      "DaKnOb"
+    ],
+    "voteCount": 10,
+    "speakerCount": 1
+  },
+  "171": {
+    "title": "Backups",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/171",
+    "created_at": "2017-03-06T13:19:46Z",
+    "votes": [
+      "DaKnOb",
+      "svelon",
+      "irinikp",
+      "vervelak",
+      "EraserheadX",
+      "webdevgr",
+      "sbehnsen",
+      "maounis",
+      "ManosGEM",
+      "nikos445",
+      "dzervas",
+      "kounelios13",
+      "flouris",
+      "sonaht",
+      "panosmk"
+    ],
+    "speakers": [
+      "DaKnOb",
+      "sbehnsen"
+    ],
+    "voteCount": 15,
+    "speakerCount": 2
+  },
+  "175": {
+    "title": "WebAssembly.js",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/175",
+    "created_at": "2017-03-16T09:57:27Z",
+    "votes": [
+      "irinikp",
+      "webdevgr",
+      "Archimidis",
+      "sstauross",
+      "zakkak",
+      "gvre",
+      "kounelios13",
+      "flouris",
+      "maninak"
+    ],
+    "speakers": [
+      "zakkak"
+    ],
+    "voteCount": 9,
+    "speakerCount": 1
+  },
+  "176": {
+    "title": "Good practices for security anonimity",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/176",
+    "created_at": "2017-03-16T10:11:56Z",
+    "votes": [
+      "Archimidis",
+      "estavrak",
+      "webdevgr",
+      "sstauross",
+      "gvre",
+      "kounelios13",
+      "irinikp",
+      "flouris",
+      "gsaslis",
+      "maninak",
+      "sonaht"
+    ],
+    "speakers": [],
+    "voteCount": 11,
+    "speakerCount": 0
+  },
+  "179": {
+    "title": "Building modern  desktop apps using  web technologies",
+    "html_url": "https://github.com/devstaff-crete/DevStaff-Heraklion/issues/179",
+    "created_at": "2017-04-28T08:00:26Z",
+    "votes": [
+      "mkcodergr",
+      "padeler",
+      "irinikp",
+      "maninak",
+      "kounelios13",
+      "Archimidis"
+    ],
+    "speakers": [],
+    "voteCount": 6,
+    "speakerCount": 0
+  }
+}
